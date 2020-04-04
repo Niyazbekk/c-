@@ -1,0 +1,102 @@
+using System;
+using System.Linq;
+
+namespace Homework
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+			//Task 1
+			String result = "RM 5 BAR 0 , ARS 2 RM 1, RM 0 CH 0, MU 2 RM 3 ";
+			string[] arr = result.Split(',', ' ');
+			//foreach (var item in arr) { Console.WriteLine(item.ToString()) ; }
+			int win = 0;
+			int loss = 0;
+			int draws = 0;
+			int goals = 0;
+			int con = 0;
+
+			int loop = 3 ;
+			int j = 0;
+			int SCORE1 = 1;
+			int SCORE2 = 3;
+			for (int i = 0; i < loop; i++)
+			{
+				if (arr[j] == "RM")
+				{
+					if (arr[SCORE1] == arr[SCORE2])
+					{
+						draws++;
+						goals = goals + Int32.Parse(arr[SCORE1]);
+						con = con + Int32.Parse(arr[SCORE2]);
+					}
+					if (Convert.ToInt32(arr[SCORE1]) > Convert.ToInt32(arr[SCORE2]))
+					{
+						win++;
+						goals = goals + Int32.Parse(arr[SCORE1]);
+						con = con + Int32.Parse(arr[SCORE2]);
+					}
+					if (Convert.ToInt32(arr[SCORE1]) < Convert.ToInt32(arr[SCORE2]))
+					{
+						loss++;
+						goals = goals + Int32.Parse(arr[SCORE1]);
+						con = con + Int32.Parse(arr[SCORE2]);
+					}
+				}
+				
+				else{
+					if (arr[SCORE1] == arr[SCORE2])
+					{
+						draws++;
+						goals = goals + Int32.Parse(arr[SCORE1]);
+						con = con + Int32.Parse(arr[SCORE2]);
+					}
+					if (Convert.ToInt32(arr[SCORE1]) > Convert.ToInt32(arr[SCORE2]))
+					{
+						loss++;
+						goals = goals + Int32.Parse(arr[SCORE1]);
+						con = con + Int32.Parse(arr[SCORE2]);
+					}
+					if (Convert.ToInt32(arr[SCORE1]) < Convert.ToInt32(arr[SCORE2]))
+					{
+						win++;
+						goals = goals + Int32.Parse(arr[SCORE1]);
+						con = con + Int32.Parse(arr[SCORE2]);
+					}
+				}
+				SCORE1 = SCORE1 + 4;
+				SCORE2 = SCORE2 + 4;
+				j = j + 4;
+			}
+			
+
+
+
+
+
+
+
+
+
+			//Task 2
+			int[] a = { 1, 2, 3, 3, 10, 5, 8 } ;
+            int[] b = { 0 , 10 , 2 , 7 , 4 , 8 } ;
+            int[] union = a.Concat(b).ToArray();
+            var c = a.Intersect(b);
+            foreach (var item in union)
+            {
+                Console.Write(item.ToString());
+            }
+            Console.WriteLine(" ");
+            foreach (var item in c)
+            {
+                Console.Write(item.ToString());
+            }
+
+
+        }
+
+		
+	}
+}
